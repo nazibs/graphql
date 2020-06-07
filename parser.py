@@ -205,36 +205,36 @@ class GraphQLParser(object):
         p[0] = Field(name=p[2], alias=p[1], arguments=p[3], directives=p[4],
                      selections=p[5])
 
-    # def p_field_optional1_1(self, p):
-    #     """
-    #     field : name arguments directives selection_set
-    #     """
-    #     p[0] = Field(name=p[1], arguments=p[2], directives=p[3],
-    #                  selections=p[5])
+    def p_field_optional1_1(self, p):
+        """
+        field : name arguments directives selection_set
+        """
+        p[0] = Field(name=p[1], arguments=p[2], directives=p[3],
+                     selections=p[5])
 
-    # def p_field_optional1_2(self, p):
-    #     """
-    #     field : alias name directives selection_set
-    #     """
-    #     p[0] = Field(name=p[2], alias=p[1], directives=p[3], selections=p[5])
+    def p_field_optional1_2(self, p):
+        """
+        field : alias name directives selection_set
+        """
+        p[0] = Field(name=p[2], alias=p[1], directives=p[3], selections=p[5])
 
-    # def p_field_optional1_3(self, p):
-    #     """
-    #     field : alias name arguments selection_set
-    #     """
-    #     p[0] = Field(name=p[2], alias=p[1], arguments=p[3], selections=p[4])
+    def p_field_optional1_3(self, p):
+        """
+        field : alias name arguments selection_set
+        """
+        p[0] = Field(name=p[2], alias=p[1], arguments=p[3], selections=p[4])
 
-    # def p_field_optional1_4(self, p):
-    #     """
-    #     field : alias name arguments directives
-    #     """
-    #     p[0] = Field(name=p[2], alias=p[1], arguments=p[3], directives=p[4])
+    def p_field_optional1_4(self, p):
+        """
+        field : alias name arguments directives
+        """
+        p[0] = Field(name=p[2], alias=p[1], arguments=p[3], directives=p[4])
 
-    # def p_field_optional2_1(self, p):
-    #     """
-    #     field : name directives selection_set
-    #     """
-    #     p[0] = Field(name=p[1], directives=p[2], selections=p[3])
+    def p_field_optional2_1(self, p):
+        """
+        field : name directives selection_set
+        """
+        p[0] = Field(name=p[1], directives=p[2], selections=p[3])
 
     def p_field_optional2_2(self, p):
         """
@@ -242,23 +242,23 @@ class GraphQLParser(object):
         """
         p[0] = Field(name=p[1], arguments=p[2], selections=p[3])
 
-    # def p_field_optional2_3(self, p):
-    #     """
-    #     field : name arguments directives
-    #     """
-    #     p[0] = Field(name=p[1], arguments=p[2], directives=p[3])
+    def p_field_optional2_3(self, p):
+        """
+        field : name arguments directives
+        """
+        p[0] = Field(name=p[1], arguments=p[2], directives=p[3])
 
-    # def p_field_optional2_4(self, p):
-    #     """
-    #     field : alias name selection_set
-    #     """
-    #     p[0] = Field(name=p[2], alias=p[1], selections=p[3])
+    def p_field_optional2_4(self, p):
+        """
+        field : alias name selection_set
+        """
+        p[0] = Field(name=p[2], alias=p[1], selections=p[3])
 
-    # def p_field_optional2_5(self, p):
-    #     """
-    #     field : alias name directives
-    #     """
-    #     p[0] = Field(name=p[2], alias=p[1], directives=p[3])
+    def p_field_optional2_5(self, p):
+        """
+        field : alias name directives
+        """
+        p[0] = Field(name=p[2], alias=p[1], directives=p[3])
 
     def p_field_optional2_6(self, p):
         """
@@ -266,29 +266,29 @@ class GraphQLParser(object):
         """
         p[0] = Field(name=p[2], alias=p[1], arguments=p[3])
 
-    # def p_field_optional3_1(self, p):
-    #     """
-    #     field : alias name
-    #     """
-    #     p[0] = Field(name=p[2], alias=p[1])
+    def p_field_optional3_1(self, p):
+        """
+        field : alias name
+        """
+        p[0] = Field(name=p[2], alias=p[1])
 
-    # def p_field_optional3_2(self, p):
-    #     """
-    #     field : name arguments
-    #     """
-    #     p[0] = Field(name=p[1], arguments=p[2])
+    def p_field_optional3_2(self, p):
+        """
+        field : name arguments
+        """
+        p[0] = Field(name=p[1], arguments=p[2])
 
-    # def p_field_optional3_3(self, p):
-    #     """
-    #     field : name directives
-    #     """
-    #     p[0] = Field(name=p[1], directives=p[2])
+    def p_field_optional3_3(self, p):
+        """
+        field : name directives
+        """
+        p[0] = Field(name=p[1], directives=p[2])
 
-    # def p_field_optional3_4(self, p):
-    #     """
-    #     field : name selection_set
-    #     """
-    #     p[0] = Field(name=p[1], selections=p[2])
+    def p_field_optional3_4(self, p):
+        """
+        field : name selection_set
+        """
+        p[0] = Field(name=p[1], selections=p[2])
 
     def p_field_optional4(self, p):
         """

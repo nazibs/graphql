@@ -7,13 +7,18 @@ ast = parser.parse("""
     id
     name
     profilePic
-    avatar: profilePic(width: 30, height: 30)
   }
 }
 """)
-print(ast)
+print(type(ast))
+# print(ast.right())
+print(getattr(ast, 'definitions'))
+print(type(getattr(ast, 'definitions')[0]))
+print(getattr(ast, 'definitions')[0])
+print(type(getattr(getattr(ast, 'definitions')[0], 'selections')))
+print(getattr(getattr(ast, 'definitions')[0], 'selections')[0])
 
-
+print(getattr(getattr(ast, 'definitions')[0], 'selections')[0])
 
 '''
 <
@@ -40,4 +45,16 @@ Document:
   ]
 >
 
+'''
+
+
+Final_output = '''
+{
+    "data": {
+        "user": {
+            "id": 4
+            "name": Nazib
+        } 
+    }
+}
 '''
