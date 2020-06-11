@@ -9,9 +9,11 @@ python 3
 ply 3.6
 
 
-Command to run
+Steps to run
 ------------
-python interpreter.py
+1. update the input query in interpreter.py
+2. run: python interpreter.py
+
 
 Authors
 -----
