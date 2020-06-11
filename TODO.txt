@@ -1,0 +1,114 @@
+abstract
+
+intro / background
+
+motivation - why
+
+implmentation + accomplishments
+(notation?)
+
+results
+    - impl 
+
+conclusion
+    - accomplishments of project 
+    - graphQL
+    - impl 
+
+future scope
+    - open problems 
+    - yet to be implemented 
+
+references
+
+
+
+
+Done:
+
+- Only query keyword
+- Query + queryName
+- No query keyword 
+
+- 1 argument for hero 
+- Without arguments:
+    {
+    hero {
+        name
+    }
+    }
+- >1 arguments
+
+- Queries can have comments!
+
+- out of scope:
+    - multiple queries
+    - fragments
+
+- validation (error handling, response json contains error)
+    1. type checking - can parse arg value both in int and str -> "1001" / 1001 -> should return same result
+    2. if arg list is empty, returns all values
+    3. if no data found for given args combination, then empty list returned
+    - throws 'invalid syntax 'error when more than one word after 'hero'
+    - 'attribute does not exist' error when field for selection not present in data is passed
+    - 'invalid argument' error when argument passed not present
+    - if arg value not present, empty list returned 
+    - if hero/droid not passed, throw error: cannot query, obj doesnt exist in database
+    ? if id=1001 passed for droid, empty list returned -> question: should throw error or not?
+
+- can now query for any type of object type
+    - hero, droid
+    - generalise 'get_hero' method
+
+
+
+
+
+* code refactoring 
+* compare output with graphene output
+* git url 
+* increase data
+* create executable
+
+
+* report 
+    - compare with actual graphQL logic and our impl
+    - test vs graphene code base 
+
+
+* cite references
+
+
+
+TODO:
+
+> Nested queries
+    heavy nesting poses security issues, 
+    should be handled at the business logic, api level
+    We have done for 2 levels
+
+    {
+    hero {
+        name
+        friends {
+        name
+        }
+    }
+    }
+
+
+> error handling (validation)
+    2. using exceptions.py
+    3. handle all cases 
+    
+
+? - to check: error when mutation is written instead of query
+
+
+? alias
+? Fragments
+? inline fragments
+? Mutations
+
+
+x Multiple queries
