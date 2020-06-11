@@ -7,7 +7,6 @@ allowed_definitions = ['Query']
 debug_mode = True
 
 def raiseException(message):
-    # raise Exception(message)
     print(message)
     raise SystemExit(0)
 
@@ -16,9 +15,6 @@ def write(message):
         print(message)
 
 class Interpreter():
-
-    # def __init__(self, ast):
-    #     self.ast = ast
 
     def checkDefinitionType(self, definition):
         def_type = str(type(definition))
@@ -36,16 +32,13 @@ class Interpreter():
         for definition in definitions:
 
             if not self.checkDefinitionType(definition):
-                # raiseException('Invalid Definition Type found!')
                 error_occured = True
                 error_message = 'Invalid Definition Type found!'
-                # raise ParseError(message = error_message)
 
             selections = getattr(definition, 'selections')
             # print('selections: ', selections)
 
             if len(selections) > 1:
-                # raiseException('Invalid syntax')
                 error_occured = True
                 error_message = 'Invalid syntax'
 
@@ -54,7 +47,6 @@ class Interpreter():
                 field_name = getattr(field,'name')
                 print('Field Name: ', field_name)
                 arguments = getattr(field,'arguments')
-                # print('arguments: ',arguments)
                 field_arguments = {}
                 for argument in arguments:
                     arg_name = getattr(argument,'name')
@@ -64,7 +56,6 @@ class Interpreter():
 
                 selection_set = getattr(field,'selections')
                 selection_set_fields = []
-                # print('selections: ', selection_set)
                 for selection_set_field in selection_set:
                     selection_set_fields.append(getattr(selection_set_field, 'name'))
                 print('selection_set_fields: ', selection_set_fields)
@@ -96,15 +87,6 @@ class Interpreter():
 def main():
 
     parser = GraphQLParser()
-#     query = '''
-# {
-#     user(id: 4) {
-#         id
-#         name
-#         profile
-#     }
-# }
-#     '''
 
     query = '''
     query abc {
@@ -123,9 +105,6 @@ def main():
     interpreter = Interpreter()
     result = interpreter.interpret(query_ast)
     print('\nResult: ',result)
-
-
-
 
 
 if __name__ == '__main__':

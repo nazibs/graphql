@@ -1,3 +1,6 @@
+# to define all the types of nodes of the ast here
+
+
 class Node(object):
     def __str__(self):
         children = []

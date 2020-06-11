@@ -3,9 +3,6 @@ droid_data = {}
 
 import json
 
-# def setup():
-# from schema import Human, Droid
-
 class Human():
     def __init__(self, id, name, friends, appears_in, home_planet):
         self.id = id
@@ -100,11 +97,7 @@ def get_friends(character):
     return map(get_character, character.friends)
 
 
-# def get_hero(episode):
-#     if episode == 5:
-#         return human_data["1000"]
-#     return droid_data["2001"]
-
+# to fetch required objects along with its fields from the data schema
 def get_information(field_name, arguments, selections_set):
     objects = []
     error_message = ''
@@ -157,52 +150,6 @@ def get_information(field_name, arguments, selections_set):
 
     return result_objects, error_occured, error_message
 
-# def get_hero(arguments, selections_set):
-#
-#     # print('Human Data: ', human_data)
-#
-#     heros = []
-#     error_message = ''
-#     error_occured = False
-#     for key, value in human_data.items():
-#         heros.append(value)
-#
-#     for key, value in arguments.items():
-#         # print('value: ',value, '  type of value: ', type(value))
-#         # hero = human_data.get(value)
-#
-#         hero_removal_index = []
-#         i = 0
-#         for hero in heros:
-#             try:
-#                 if ""+str(getattr(hero, key)) != ''+str(value):
-#                     hero_removal_index.append(i)
-#                 i += 1
-#             except AttributeError:
-#                 error_message = 'Invalid Argument ' + key + '!'
-#                 error_occured = True
-#                 break
-#         if error_occured:
-#             break
-#
-#         for index in sorted(hero_removal_index, reverse=True):
-#             heros.pop(index)
-#
-#     result_heros = []
-#
-#     try:
-#         for hero in heros:
-#             result = {}
-#             for field in selections_set:
-#                 result[field] = getattr(hero, field)
-#             result_heros.append(result)
-#     except AttributeError:
-#         error_message = 'Attribute does not exist!'
-#         error_occured = True
-#
-#     return result_heros, error_occured, error_message
-
-# def
 
 def get_human(id):
     return human_data.get(id)

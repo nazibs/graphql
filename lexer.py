@@ -6,24 +6,10 @@ from ply.lex import TOKEN
 
 from exceptions import LexerError
 
+# lexer which breaks the user input into tokens
 
 class GraphQLLexer(object):
-    """
-    GraphQL lexer with PLY-compatible interface for usage with PLY-yacc.
 
-    Usage example:
-
-        lexer = GraphQLLexer()
-        lexer.input(some_text)
-        for token in lexer:
-            print token.type, token.value
-
-    To use it with yacc, pass instance of GraphQLLexer to yacc.parse() method:
-
-        lexer = GraphQLLexer()
-        yacc.parse(input=some_text, lexer=lexer)
-
-    """
     def __init__(self, **kwargs):
         self._lexer = lex.lex(module=self, **kwargs)
         self.reset()
@@ -42,7 +28,6 @@ class GraphQLLexer(object):
     def token(self):
         return self._lexer.token()
 
-    # Iterator interface
     def __iter__(self):
         return self
 
@@ -77,6 +62,7 @@ class GraphQLLexer(object):
     re_fraction_part = r'\.[0-9]+'
     re_exponent_part = r'[eE][\+-]?[0-9]+'
 
+    # possible token types:
     tokens = [
         'NAME',
         'FRAGMENT',
@@ -145,17 +131,11 @@ class GraphQLLexer(object):
 
     not_followed_by_name = '(?![_0-9A-Za-z])'
 
-    # @TOKEN('fragment' + not_followed_by_name)
-    # def t_FRAGMENT(self, t):
-    #     return t
 
     @TOKEN('query' + not_followed_by_name)
     def t_QUERY(self, t):
         return t
 
-    # @TOKEN('mutation' + not_followed_by_name)
-    # def t_MUTATION(self, t):
-    #     return t
 
     @TOKEN('on' + not_followed_by_name)
     def t_ON(self, t):

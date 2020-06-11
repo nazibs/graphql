@@ -4,27 +4,10 @@ from ast import *  # noqa
 from exceptions import SyntaxError
 from lexer import GraphQLLexer
 
+# parser converts the list of tokens into ast
 
 class GraphQLParser(object):
-    """
-    GraphQL parser, builds AST.
 
-    Can be used with any PLY-compatible lexer, by default uses GraphQLLexer.
-
-    Usage example:
-
-        parser = GraphQLParser()
-        document = parser.parse(some_text)
-
-    Use with custom lexer:
-
-        parser = GraphQLParser()
-        document = parser.parse(some_text, lexer=my_lexer)
-
-    Note that custom lexer must provide the same set of tokens as defined in
-    GraphQLLexer.tokens.
-
-    """
     def __init__(self, debug=False, **kwargs):
         self.default_lexer = GraphQLLexer()
         self.tokens = self.default_lexer.tokens
@@ -37,6 +20,7 @@ class GraphQLParser(object):
 
     start = 'document'
 
+    # root of graphQL
     def p_document(self, p):
         """
         document : definition_list
@@ -49,23 +33,7 @@ class GraphQLParser(object):
         """
         p[0] = Document(definitions=[Query(selections=p[1])])
 
-    # def p_document_shorthand_with_fragments(self, p):
-    #     """
-    #     document : selection_set fragment_list
-    #     """
-    #     p[0] = Document(definitions=[Query(selections=p[1])] + p[2])
 
-    # def p_fragment_list(self, p):
-    #     """
-    #     fragment_list : fragment_list fragment_definition
-    #     """
-    #     p[0] = p[1] + [p[2]]
-
-    # def p_fragment_list_single(self, p):
-    #     """
-    #     fragment_list : fragment_definition
-    #     """
-    #     p[0] = [p[1]]
 
     def p_definition_list(self, p):
         """
@@ -295,64 +263,6 @@ class GraphQLParser(object):
         field : name
         """
         p[0] = Field(name=p[1])
-
-    # def p_fragment_spread1(self, p):
-    #     """
-    #     fragment_spread : SPREAD fragment_name directives
-    #     """
-    #     p[0] = FragmentSpread(name=p[2], directives=p[3])
-
-    # def p_fragment_spread2(self, p):
-    #     """
-    #     fragment_spread : SPREAD fragment_name
-    #     """
-    #     p[0] = FragmentSpread(name=p[2])
-
-    # def p_fragment_definition1(self, p):
-    #     """
-    #     fragment_definition : FRAGMENT fragment_name ON type_condition directives selection_set
-    #     """
-    #     p[0] = FragmentDefinition(name=p[2], type_condition=p[4],
-    #                               selections=p[6], directives=p[5])
-
-    # def p_fragment_definition2(self, p):
-    #     """
-    #     fragment_definition : FRAGMENT fragment_name ON type_condition selection_set
-    #     """
-    #     p[0] = FragmentDefinition(name=p[2], type_condition=p[4],
-    #                               selections=p[5])
-
-    # def p_inline_fragment1(self, p):
-    #     """
-    #     inline_fragment : SPREAD ON type_condition directives selection_set
-    #     """
-    #     p[0] = InlineFragment(type_condition=p[3], selections=p[5],
-    #                           directives=p[4])
-
-    # def p_inline_fragment2(self, p):
-    #     """
-    #     inline_fragment : SPREAD ON type_condition selection_set
-    #     """
-    #     p[0] = InlineFragment(type_condition=p[3], selections=p[4])
-
-    # def p_fragment_name(self, p):
-    #     """
-    #     fragment_name : NAME
-    #                   | FRAGMENT
-    #                   | QUERY
-    #                   | MUTATION
-    #                   | TRUE
-    #                   | FALSE
-    #                   | NULL
-    #     """
-    #     p[0] = p[1]
-
-    # def p_type_condition(self, p):
-    #     """
-    #     type_condition : named_type
-    #     """
-    #     p[0] = p[1]
-
 
     # @include(if: Boolean)  @skip(if: Boolean) 
     def p_directives(self, p):
